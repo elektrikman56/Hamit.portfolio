@@ -1,63 +1,75 @@
+/* Genel Sayfa Ayarları (Senin kodun) */
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f4f4f9;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-header {
-    margin-top: 30px;
-    text-align: center;
-}
-
-.gallery-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-    max-width: 1000px;
-}
-
-.card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    padding: 10px;
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-.card img {
-    border-radius: 8px;
-    display: block;
-}
-
-.card p {
-    text-align: center;
-    color: #555;
-    font-weight: bold;
-}
-
-.controls {
-    margin-bottom: 50px;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('photos/arkaplan.jpg'); /* Uzantıya dikkat (.png ise düzelt) */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    height: 100vh;
+    overflow: hidden;
 }
 
-button:hover {
-    background-color: #0056b3;
+/* Dikdörtgen Panel (Hizalaması Değişti) */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 140px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center; /* İÇERİĞİ SAYFANIN YATAYDA TAM ORTASINA ALIR */
+    align-items: center;    /* DİKEYDE ORTALAR */
+    z-index: 1000;
+}
+
+/* Logo ve Yazıları Bir Arada Tutan Kapsayıcı */
+.header-container {
+    display: flex;
+    align-items: center; /* Logo ve yazıları yan yana dikeyde hizalar */
+    gap: 30px; /* Logo ile yazı bloğu arasındaki boşluk */
+}
+
+/* Panel İçindeki Logo */
+.nav-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* İsim ve Link Bloğu */
+.header-info {
+    display: flex;
+    flex-direction: column; /* İsim üstte link altta */
+    text-align: left; /* Yazıları kendi içinde sola yaslar */
+}
+
+.header-info h1 {
+    font-size: 2.5rem; /* Panelin içine sığması için boyutu ayarladık */
+    margin: 0;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+/* Linkler */
+.contact-links {
+    margin-top: 10px;
+}
+
+.contact-links a {
+    color: #00d4ff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.separator {
+    color: #ccc;
+    margin: 0 10px;
 }

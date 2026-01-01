@@ -1,19 +1,16 @@
-const gallery = document.getElementById('gallery');
-const btn = document.getElementById('add-photo');
+// Sayfa yüklendiğinde konsola bir selam yazalım (test için)
+console.log("Hamit Budak Portfolio Hazır!");
 
-btn.addEventListener('click', () => {
-    // Rastgele bir ID oluşturuyoruz ki farklı fotoğraflar gelsin
-    const randomId = Math.floor(Math.random() * 1000);
-    
-    // Yeni bir kart yapısı oluşturuyoruz
-    const newCard = document.createElement('div');
-    newCard.classList.add('card');
+// İsim efektini kontrol edelim
+const mainTitle = document.querySelector('h1');
 
-    newCard.innerHTML = `
-        <img src="https://picsum.photos/300/200?random=${randomId}" alt="Yeni Fotoğraf">
-        <p>Yeni Eklenen ${randomId}</p>
-    `;
+if (mainTitle) {
+    mainTitle.addEventListener('mouseover', () => {
+        mainTitle.style.transition = "0.5s";
+        mainTitle.style.color = "#00d4ff";
+    });
 
-    // Galeriye ekliyoruz
-    gallery.appendChild(newCard);
-});
+    mainTitle.addEventListener('mouseout', () => {
+        mainTitle.style.color = "white";
+    });
+}
