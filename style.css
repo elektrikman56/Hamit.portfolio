@@ -1,65 +1,74 @@
-/* Genel Sayfa Ayarları (Senin kodun) */
+/* 1. Genel Sayfa Ayarları ve Arka Plan Karartma */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('photos/arkaplan.jpg'); /* Uzantıya dikkat (.png ise düzelt) */
-    background-attachment: fixed;
+    
+    /* Arka Plan Ayarları */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('photos/arkaplan.jpg');
+    background-attachment: fixed; /* Resmin çakılı kalmasını sağlar */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    
     color: white;
-    height: 100vh;
-    overflow: hidden;
+    
+    /* KAYDIRMA AYARLARI */
+    min-height: 100vh; /* Sayfa en az ekran kadar olsun ama uzayabilsin */
+    overflow-y: visible; /* Aşağı doğru kaydırmayı aktif eder */
+    overflow-x: hidden; /* Yanlara doğru kaymayı engeller */
 }
 
-/* Dikdörtgen Panel (Hizalaması Değişti) */
+/* 2. Üstteki Buğulu Dikdörtgen Panel */
 .navbar {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 140px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1); /* Beyaz ama çok saydam */
+    backdrop-filter: blur(15px); /* Arkayı buğulu (buzlu cam) yapar */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
-    justify-content: center; /* İÇERİĞİ SAYFANIN YATAYDA TAM ORTASINA ALIR */
-    align-items: center;    /* DİKEYDE ORTALAR */
+    justify-content: center; /* İçindeki her şeyi SAYFANIN ORTASINA toplar */
+    align-items: center;    /* Dikeyde tam ortalar */
     z-index: 1000;
 }
 
-/* Logo ve Yazıları Bir Arada Tutan Kapsayıcı */
+/* 3. Panel İçindeki İçerik Kapsayıcısı (Logo + Yazılar) */
 .header-container {
     display: flex;
     align-items: center; /* Logo ve yazıları yan yana dikeyde hizalar */
-    gap: 30px; /* Logo ile yazı bloğu arasındaki boşluk */
+    gap: 30px; /* Logo ile isim arasındaki boşluk */
 }
 
-/* Panel İçindeki Logo */
+/* 4. Logo Ayarı */
 .nav-logo {
     width: 100px;
     height: 100px;
-    border-radius: 10px;
+    border-radius: 12px;
     object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Logoya hafif derinlik katar */
 }
 
-/* İsim ve Link Bloğu */
+/* 5. İsim ve İletişim Bilgileri */
 .header-info {
     display: flex;
-    flex-direction: column; /* İsim üstte link altta */
-    text-align: left; /* Yazıları kendi içinde sola yaslar */
+    flex-direction: column; /* İsim üstte, linkler altta */
+    text-align: left;
 }
 
 .header-info h1 {
-    font-size: 2.5rem; /* Panelin içine sığması için boyutu ayarladık */
+    font-size: 2.2rem;
     margin: 0;
+    font-weight: bold;
+    letter-spacing: 1px;
     text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
 
-/* Linkler */
+/* 6. Linklerin Stili */
 .contact-links {
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 .contact-links a {
@@ -67,9 +76,137 @@ body {
     text-decoration: none;
     font-size: 1rem;
     font-weight: 600;
+    transition: all 0.3s ease;
 }
 
+.contact-links a:hover {
+    color: white;
+    text-shadow: 0 0 10px #00d4ff; /* Üzerine gelince parlama efekti */
+}
+
+/* Aradaki Ayraç (|) */
 .separator {
-    color: #ccc;
-    margin: 0 10px;
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0 12px;
+}
+
+
+/* --- PROJELER KISMI (YENİ) --- */
+/* Projeler Genel Alanı */
+.projects-container {
+    margin-top: 180px; /* Üst panelin altında kalması için */
+    padding: 20px 50px; /* Kenarlardan iç boşluk */
+    
+    display: flex;
+    flex-wrap: wrap; /* Ekran daralınca kartlar aşağı iner */
+    
+    /* ÖNEMLİ: Kartları yatayda her yere eşit dağıtır */
+    justify-content: space-evenly; 
+    
+    gap: 30px; /* Kartlar arasındaki minimum mesafe */
+    width: 100%;
+    box-sizing: border-box;
+    padding-bottom: 100px;
+}
+
+/* Kart Genişlik Ayarı */
+.project-card {
+    /* 3 tane yan yana sığması için (33% yerine gap payıyla birlikte) */
+    flex: 0 1 350px; 
+    height: 250px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Mouse gelince büyüme */
+/* Mouse Üzerine Gelince Kartın Davranışı */
+.project-card:hover {
+    transform: scale(1.7); /* Kartı büyütür */
+    z-index: 1001; /* DİKKAT: Diğer tüm kartların ve Navbar'ın üzerine çıkmasını sağlar */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8); /* Daha derin bir gölge ile öne çıkarır */
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.4s;
+}
+
+/* Mouse gelince resmi karart */
+.project-card:hover img {
+    filter: brightness(0.2);
+}
+
+/* Açıklama Katmanı */
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0; /* Başta gizli */
+    transition: 0.4s;
+    text-align: center;
+}
+
+/* Mouse gelince yazıyı göster */
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-overlay h3 { color: #00d4ff; margin-bottom: 10px; }
+.project-overlay p { font-size: 0.9rem; color: #fff; }
+
+
+.footer {
+    background-color: rgba(0, 0, 0, 0.9); /* Tam siyah veya çok koyu saydam */
+    color: white;
+    padding: 40px 0;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative; /* Kartların altında kalması için */
+    z-index: 500; /* Kartlar hover olduğunda 1001 olduğu için bu her zaman altta kalır */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a {
+    color: #00d4ff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    color: white;
+    text-shadow: 0 0 8px #00d4ff;
 }
