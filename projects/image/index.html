@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Detection & Counting - Hamit Budak</title>
+    <link rel="icon" type="image/png" href="../../photos/icon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="overlay"></div>
+    
+    <nav class="navbar">
+        <div class="header-container">
+            <a href="../../index.html" class="back-button">← ANA SAYFA</a>
+            <div class="header-info">
+                <h1 class="header-name">VEHICLE DETECTION & COUNTING</h1>
+                <p class="header-subtitle">MATLAB Image Processing App</p>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper">
+        <article class="project-details">
+            <h2>Proje Genel Bakış</h2>
+            <p>
+                Bu proje, video akışı üzerinden hareketli nesneleri (araçları) gerçek zamanlı olarak tespit etmek ve saymak amacıyla 
+                <strong>MATLAB</strong> ortamında geliştirilmiştir. Görüntü işleme algoritmaları kullanılarak, karmaşık video kareleri 
+                anlamlı verilere dönüştürülmüştür.
+            </p>
+            
+            <h2>Algoritma ve Çalışma Mantığı</h2>
+            <p>
+                Projenin temelinde yatan mantık, araçların arka plandan ayırt edilmesi ve morfolojik olarak analiz edilmesidir:
+            </p>
+            <ul>
+                <li><strong>Gri Tonlama ve Eşikleme (Binarization):</strong> Renkli video kareleri önce gri tona, ardından 0-255 aralığından 0 (siyah) ve 1 (beyaz) değerlerine indirgenerek ikili (binary) görüntüye dönüştürülür.</li>
+                <li><strong>Arka Plan Çıkarma:</strong> Hareket etmeyen nesneler görüntüden temizlenerek sadece hareketli pikseller odak noktasına alınır.</li>
+                <li><strong>Blob Analysis:</strong> Beyaz piksellerin oluşturduğu gruplar (lekeler) analiz edilir. Bu grupların alanı ve boyutları önceden tanımlanan "araç boyutu" kriterlerine uyuyorsa, sistem bunu bir araç olarak tanımlar.</li>
+                <li><strong>Nesne Sayma:</strong> Tanımlanan araçlar belirlenen bir sanal çizgiyi geçtiğinde sayaç tetiklenir ve toplam araç sayısı güncellenir.</li>
+            </ul>
+
+            <div class="project-images">
+                <img src="../../photos/matlab_project.jpg" alt="MATLAB Vehicle Detection Result">
+            </div>
+
+            <h2>Teknik Kazanımlar</h2>
+            <p>
+                Bu çalışma sayesinde dijital görüntü işleme (digital image processing), filtreleme teknikleri ve nesne takibi 
+                konularında derinlemesine bilgi sahibi oldum. MATLAB'ın <i>Computer Vision Toolbox</i> kütüphanesini etkin bir şekilde 
+                kullanarak karmaşık mühendislik problemlerine yazılımsal çözümler üretmeyi deneyimledim.
+            </p>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Hamit Budak - MATLAB & Computer Vision</p>
+            <div class="social-links">
+                <a href="../../index.html">Ana Sayfa</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

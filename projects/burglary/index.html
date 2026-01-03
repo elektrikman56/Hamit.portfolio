@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burglary Analytics & Control Systems - Hamit Budak</title>
+    <link rel="icon" type="image/png" href="../../photos/icon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="overlay"></div>
+    
+    <nav class="navbar">
+        <div class="header-container">
+            <a href="../../index.html" class="back-button">← ANA SAYFA</a>
+            <div class="header-info">
+                <h1 class="header-name">SYSTEM MODELING & OPTIMIZATION</h1>
+                <p class="header-subtitle">Data Mining, Linear Regression & Control Theory Research</p>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper">
+        <article class="project-details">
+            <h2>Araştırma Özeti</h2>
+            <p>
+                Bu çalışma, hırsızlık vakalarını matematiksel bir sistem olarak ele alan ve bu sistemin çıktılarını optimize etmeyi hedefleyen akademik tabanlı bir projedir. Yaklaşık 20 farklı veri kaynağından (yaş, tecrübe, lokasyon, ev sahibi profili vb.) elde edilen veriler üzerinde <strong>Data Mining (Veri Madenciliği)</strong> teknikleri uygulanarak kapsamlı bir veri seti oluşturulmuştur.
+            </p>
+            
+            <h2>Matematiksel Modelleme ve Lineer Regresyon</h2>
+            <p>
+                Elde edilen veriler <strong>MATLAB</strong> ortamında <strong>Lineer Regresyon</strong> yöntemiyle analiz edilmiştir. Geliştirilen model, sisteme girilen parametreler doğrultusunda şu iki kritik çıktıyı yüksek doğrulukla tahmin etmektedir:
+            </p>
+            <ul>
+                <li><strong>Maddi Kayıp Tahmini:</strong> Hırsızın evden ne kadarlık (TL bazında) malzeme çalabileceği.</li>
+                <li><strong>Süre Tahmini:</strong> Tüm hırsızlık eyleminin kaç dakikada tamamlanabileceği.</li>
+            </ul>
+
+            
+
+[Image of linear regression graph showing data points and line of best fit]
+
+
+            <h2>Sistem Optimizasyonu: Lag & Lead Controllers</h2>
+            <p>
+                Projenin en özgün kısmı, bu hırsızlık senaryosunu dinamik bir sistem olarak modelleyip üzerine <strong>Lag (Gecikmeli)</strong> ve <strong>Lead (Öncü)</strong> kontrolcüler tasarlamaktır. 
+            </p>
+            <blockquote>
+                <strong>Not:</strong> Bu kontrolcüler, hırsızlığı teşvik etmek değil; bir eylemin "kusursuz bir sistem" olarak ele alındığında matematiksel olarak nasıl mükemmelleştirilebileceğini analiz etmek amacıyla tasarlanmıştır.
+            </div>
+            <p>
+                Lead Controller ile sistemin tepki hızı artırılarak zaman optimizasyonu sağlanmış, Lag Controller ile sistemin kararlı hal hatası minimize edilerek tahmin edilen çıktılara en yakın sonuçların alınması hedeflenmiştir.
+            </p>
+
+            
+
+            <div class="project-images">
+                <img src="../../photos/security_project.jpg" alt="MATLAB Control System Design and Regression Results">
+            </div>
+
+            <h2>Akademik Katkı</h2>
+            <p>
+                Yayınlanmamış bir makale çalışması olan bu proje; veri analitiği ile klasik kontrol teorisinin alışılagelmişin dışında bir senaryoda birleştirilmesinin bir kanıtıdır. Sistem dinamiği, kök-yer eğrisi (root locus) analizi ve regresyon modelleri üzerine derinlemesine tecrübe kazandırmıştır.
+            </p>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Hamit Budak - Control & Data Research</p>
+            <div class="social-links">
+                <a href="../../index.html">Ana Sayfa</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -23,12 +23,22 @@
                 </div>
             </div>
         </div>
+        <div class="power-switch-container">
+            <label class="switch">
+                <input type="checkbox" id="power-toggle"> <span class="slider"></span>
+            </label>
+            <span class="switch-text" id="switch-status">PLUG IN</span>
+        </div>
+        <div style="display:none;">
+            <img src="photos/plugin.png">
+            <img src="photos/plugout.png">
+        </div>
     </nav>
 
     <main class="projects-container">
         
         <a href="projects/thesis/index.html" class="project-card">
-            <img src="photos/Tez.jpg" alt="Final Thesis">
+            <img src="photos/Tez.webp" alt="Final Thesis">
             <div class="project-overlay">
                 <h3>FINAL THESIS</h3>
                 <p>Autonomous Indoor Navigating Robot</p>
@@ -36,7 +46,7 @@
         </a>
 
         <a href="projects/rover/index.html" class="project-card">
-            <img src="photos/rover.jpeg" alt="Earendil Rover">
+            <img src="photos/rover.webp" alt="Earendil Rover">
             <div class="project-overlay">
                 <h3>EARENDIL ROVER</h3>
                 <p>Autonomous Mobile Robots</p>
@@ -44,7 +54,7 @@
         </a>
 
         <a href="projects/internship1/index.html" class="project-card">
-            <img src="photos/intern1.jpg" alt="Internship 1">
+            <img src="photos/intern1.webp" alt="Internship 1">
             <div class="project-overlay">
                 <h3>INTERNSHIP 1</h3>
                 <p>Cloud and Digitalization</p>
@@ -52,7 +62,7 @@
         </a>
 
         <a href="projects/internship2/index.html" class="project-card">
-            <img src="photos/intern2.jpg" alt="Internship 2">
+            <img src="photos/intern2.webp" alt="Internship 2">
             <div class="project-overlay">
                 <h3>INTERNSHIP 2</h3>
                 <p>Planning and Drawing Projects</p>
@@ -60,10 +70,50 @@
         </a>
 
         <a href="projects/hospital/index.html" class="project-card">
-            <img src="photos/kocaeli.jpg" alt="Kocaeli City Hospital">
+            <img src="photos/kocaeli.webp" alt="Kocaeli City Hospital">
             <div class="project-overlay">
                 <h3>KOCAELI CITY HOSPITAL</h3>
                 <p>Project Following and Leading</p>
+            </div>
+        </a>
+        
+        <a href="projects/boards/index.html" class="project-card">
+            <img src="photos/board.webp" alt="boards">
+            <div class="project-overlay">
+                <h3>BOARDS DESIGN</h3>
+                <p>University Projects</p>
+            </div>
+        </a>
+
+        <a href="projects/light/index.html" class="project-card">
+            <img src="photos/light.webp" alt="Light">
+            <div class="project-overlay">
+                <h3>LIGHT TRACKING MOTOR</h3>
+                <p>Motor Following To Light</p>
+            </div>
+        </a>
+
+        <a href="projects/image/index.html" class="project-card">
+            <img src="photos/car.webp" alt="CAR">
+            <div class="project-overlay">
+                <h3>VEHICLE COUNTER</h3>
+                <p>MATLAB Vehicle Counter by Image Proccessing</p>
+            </div>
+        </a>
+
+        <a href="projects/burglary/index.html" class="project-card">
+            <img src="photos/burglary.webp" alt="Kocaeli City Hospital">
+            <div class="project-overlay">
+                <h3>BURGLARY CONTROLLER</h3>
+                <p>Lead and Lag Compansator to Burglar</p>
+            </div>
+        </a>
+
+        <a href="projects/protocol/index.html" class="project-card">
+            <img src="photos/redap.webp" alt="Kocaeli City Hospital">
+            <div class="project-overlay">
+                <h3>PERSONAL PROTOCOL</h3>
+                <p>Reliable Data Protocol</p>
             </div>
         </a>
         
@@ -79,6 +129,26 @@
             </div>
         </div>
     </footer>
+    <script>
+        const toggle = document.getElementById('power-toggle');
+        const statusText = document.getElementById('switch-status');
 
+        // Sayfa yüklendiğinde düğmenin durumuna göre sistemi ayarla
+        function updateSystemStatus() {
+            if (toggle.checked) {
+                document.body.classList.add('system-on');
+                statusText.innerText = "PLUG OUT";
+            } else {
+                document.body.classList.remove('system-on');
+                statusText.innerText = "PLUG IN";
+            }
+        }
+
+        // Düğme her değiştiğinde çalışır
+        toggle.addEventListener('change', updateSystemStatus);
+
+        // Sayfa ilk açıldığında kontrol et (Önbellekten gelen 'checked' durumunu yakalar)
+        updateSystemStatus();
+    </script>
 </body>
 </html>

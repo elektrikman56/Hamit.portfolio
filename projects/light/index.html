@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Tracking Motor - Hamit Budak</title>
+    <link rel="icon" type="image/png" href="../../photos/icon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="overlay"></div>
+    
+    <nav class="navbar">
+        <div class="header-container">
+            <a href="../../index.html" class="back-button">← ANA SAYFA</a>
+            <div class="header-info">
+                <h1 class="header-name">LIGHT TRACKING MOTOR</h1>
+                <p class="header-subtitle">Term Project: Sun-Tracking System Prototype</p>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper">
+        <article class="project-details">
+            <h2>Proje Amacı ve Çalışma Mantığı</h2>
+            <p>
+                Bu proje, ışık yoğunluğunu takip ederek motorun yönünü en dik açıyla ışık kaynağına yönlendiren bir sistemdir. 
+                Güneş panellerinin verimliliğini artırmak amacıyla kullanılan <strong>Solar Tracking</strong> sistemlerinin temel çalışma 
+                prensibini modellemektedir.
+            </p>
+            
+            <p>
+                Sistem, ışık farkını algılamak için <strong>LDR (Light Dependent Resistor)</strong> sensör çiftlerini kullanır. 
+                Sensörlerden gelen analog veriler işlenerek, ışık kaynağının yönüne göre servo veya DC motorun kontrol edilmesi sağlanır.
+            </p>
+
+            [Image of a sun tracking circuit diagram with LDR and motors]
+
+            <h2>PCB Tasarımı ve Donanım</h2>
+            <p>
+                Bu projenin en önemli aşaması, tasarımın breadboard aşamasından kalıcı bir <strong>PCB (Baskı Devre Kartı)</strong> 
+                üzerine taşınmasıdır. Tasarım sürecinde şu adımlar izlenmiştir:
+            </p>
+            <ul>
+                <li><strong>Şematik Çizim:</strong> Proteus ISIS üzerinde devre şemasının tasarlanması.</li>
+                <li><strong>PCB Layout:</strong> Proteus ARES ile bileşenlerin yerleşimi ve yol çizimlerinin (routing) yapılması.</li>
+                <li><strong>Montaj:</strong> Bileşenlerin PCB üzerine hassas bir şekilde lehimlenerek testlerin yapılması.</li>
+            </ul>
+
+            <div class="project-images">
+                <img src="../../photos/light_project.jpg" alt="Light Tracking Motor PCB Design">
+            </div>
+
+            <h2>Teknik Özellikler</h2>
+            <p>
+                Sistemde hassas yönelimi sağlamak amacıyla karşılaştırıcı (comparator) devreler veya mikrodenetleyici tabanlı 
+                algoritmalar kullanılmıştır. Bu çalışma, sadece bir "ışık takipçisi" değil, aynı zamanda verimli enerji 
+                sistemlerine giriş niteliğinde bir mühendislik çözümüdür.
+            </p>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Hamit Budak - Control Systems Project</p>
+            <div class="social-links">
+                <a href="../../index.html">Ana Sayfa</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

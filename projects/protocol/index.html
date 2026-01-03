@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REDAP Protocol - Hamit Budak</title>
+    <link rel="icon" type="image/png" href="../../photos/icon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="overlay"></div>
+    
+    <nav class="navbar">
+        <div class="header-container">
+            <a href="../../index.html" class="back-button">← ANA SAYFA</a>
+            <div class="header-info">
+                <h1 class="header-name">REDAP PROTOCOL</h1>
+                <p class="header-subtitle">Custom Data Transfer Protocol Design</p>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper">
+        <article class="project-details">
+            <h2>Proje Amacı</h2>
+            <p>
+                Bu çalışma, bilgisayar ağlarının temelini oluşturan <strong>OSI ve TCP/IP</strong> modellerini pratik bir şekilde 
+                deneyimlemek amacıyla yürütülmüştür. Projenin ana çıktısı, ağ üzerindeki iki uç nokta arasında güvenilir dosya 
+                alışverişini sağlayan, özgün kurallar setine sahip <strong>REDAP</strong> adlı veri iletişim protokolüdür.
+            </p>
+
+            
+
+            <h2>Teknik Altyapı ve Veri Akışı</h2>
+            <p>
+                REDAP protokolü, internet katmanları arasındaki veri paketleme (encapsulation) ve hata kontrol mekanizmalarını 
+                baz alarak şu prensipler üzerine inşa edilmiştir:
+            </p>
+            <ul>
+                <li><strong>Hata Kontrolü (ACK/NACK):</strong> Verinin alıcıya ulaşıp ulaşmadığını doğrulamak için "Acknowledgement" (ACK) ve hata durumunda "Negative Acknowledgement" (NACK) sinyalleri kullanılmıştır.</li>
+                <li><strong>Paketleme Yapısı:</strong> Gönderilen dosyalar parçalara ayrılarak her birine başlık (header) ve hata kontrol kodu (checksum) eklenmiş, alıcı tarafta bu parçaların doğru sırada birleştirilmesi sağlanmıştır.</li>
+                <li><strong>Akış Kontrolü:</strong> Ağdaki tıkanıklığı önlemek ve veri kaybını minimize etmek için akış kontrol algoritmaları protokole entegre edilmiştir.</li>
+            </ul>
+
+            
+
+            <div class="project-images">
+                <img src="../../photos/redap_project.jpg" alt="REDAP Protocol Architecture">
+            </div>
+
+            <h2>Kazanımlar</h2>
+            <p>
+                Bu ders ve proje sayesinde, paket anahtarlamalı ağların nasıl çalıştığını, TCP'nin güvenilirlik mantığını ve 
+                UDP ile arasındaki farkları derinlemesine kavradım. Kendi protokolümüzü (REDAP) sıfırdan üretmek, 
+                düşük seviyeli (low-level) network programlama ve veri güvenliği konularında temel oluşturmuştur.
+            </p>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Hamit Budak - Computer Networking & Protocols</p>
+            <div class="social-links">
+                <a href="../../index.html">Ana Sayfa</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

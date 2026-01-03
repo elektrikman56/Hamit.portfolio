@@ -1,28 +1,123 @@
-/* 1. Genel Sayfa Ayarları */
+/* ==========================================================================
+   1. GENEL SAYFA AYARLARI VE ARKA PLAN
+   ========================================================================== */
 html, body {
-    height: 100%; /* Footer'ın en alta yapışması için şart */
+    height: 100%;
     margin: 0;
     padding: 0;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('photos/arkaplan.jpg');
+    /* Arka plan karartması (%60 seviyesinde sabit) */
+    background-image: url('photos/arkaplan.jpg');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
-
-    /* FOOTER'I EN ALTA İTMEK İÇİN GEREKLİ DÜZENLEME */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* 2. Üstteki Buğulu Dikdörtgen Panel */
+/* ==========================================================================
+   2. SİSTEM GÜÇ PERDESİ (OVERLAY) VE GEÇİŞLER
+   ========================================================================== */
+/* Arka plan resminin hemen önündeki perde */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0.95; /* Kapalıyken arka plan neredeyse zifiri karanlık */
+    z-index: -1;   /* KRİTİK: İçeriklerin (0) arkasına, arka planın önüne geçer */
+    transition: opacity 1.5s ease-in-out;
+    pointer-events: none;
+}
+
+/* Sistem açıldığında perde şeffaflaşır */
+body.system-on .overlay {
+    opacity: 0.3; /* Açıldığında arka plan canlanır ama hala hafif bir derinlik kalır */
+}
+
+/* İçeriklerin net görünmesi için body ayarı */
+body {
+    position: relative;
+    z-index: 0;
+    /* ... diğer background ayarların aynı kalsın ... */
+}
+
+/* Navbar ve Container'ların her zaman üstte kalmasını garanti edelim */
+.navbar, .projects-container, .footer, .power-switch-container {
+    position: relative; /* veya absolute/fixed */
+    z-index: 10; /* Overlay'den (-1) daha yüksek bir değer */
+}
+
+/* ==========================================================================
+   3. GÜÇ DÜĞMESİ (POWER SWITCH) TASARIMI
+   ========================================================================== */
+/* GÜÇ DÜĞMESİ KONTEYNIRI */
+.power-switch-container {
+    position: fixed;
+    top: 30px;
+    right: 50px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* YAZI STİLİ (PLUG IN / PLUG OUT) */
+.switch-text {
+    font-size: 15px;
+    font-weight: bold;
+    color: #00d4ff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* ANA DÜĞME ÇERÇEVESİ */
+.switch {
+    position: relative;
+    display: inline-block;
+    /* Fotoğraflarının boyutuna göre burayı artırabilirsin (Örn: 120px - 60px) */
+    width: 120px;  
+    height: 60px;  
+}
+
+/* Gizli Checkbox */
+.switch input { opacity: 0; width: 0; height: 0; }
+
+/* FOTOĞRAFLARIN GÖRÜNECEĞİ ALAN (SLIDER) */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    transition: 0.4s ease-in-out; /* Fotoğraf değişim hızı */
+    
+    /* KAPALI DURUM: İlk Fotoğrafın */
+    background-image: url('photos/plugin.png'); 
+    background-size: contain; /* Fotoğrafın tamamını sığdırır */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* AÇIK DURUM: Tıklandığında İkinci Fotoğraf */
+input:checked + .slider {
+    background-image: url('photos/plugout.png');
+    /* Açıkken hafif bir parlama istersen alttaki satırı aktif tutabilirsin */
+    filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.6));
+}
+/* ==========================================================================
+   4. NAVBAR (ÜST PANEL)
+   ========================================================================== */
 .navbar {
-    position: absolute; /* Senin isteğin üzerine yukarı kayan yapı */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -50,12 +145,6 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-.header-info {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
 .header-info h1 {
     font-size: 2.2rem;
     margin: 0;
@@ -72,6 +161,7 @@ body {
     font-weight: 600;
     transition: all 0.3s ease;
 }
+
 .contact-links a:hover {
     color: white;
     text-shadow: 0 0 10px #00d4ff;
@@ -79,9 +169,11 @@ body {
 
 .separator { color: rgba(255, 255, 255, 0.3); margin: 0 12px; }
 
-/* --- PROJELER KISMI --- */
+/* ==========================================================================
+   5. PROJELER ALANI (CARDS)
+   ========================================================================== */
 .projects-container {
-    flex: 1; /* SAYFA BOŞSA BİLE FOOTER'I EN ALTA İTER */
+    flex: 1;
     margin-top: 180px;
     padding: 20px 50px;
     display: flex;
@@ -89,7 +181,7 @@ body {
     justify-content: space-evenly;
     gap: 80px 30px;
     box-sizing: border-box;
-    padding-bottom: 150px; /* Kartlar büyüdüğünde footer'a binmesin diye artırıldı */
+    padding-bottom: 80px;
 }
 
 .project-card {
@@ -101,10 +193,12 @@ body {
     cursor: pointer;
     transition: transform 0.4s ease;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-decoration: none; /* Link çizgilerini kaldırır */
+    color: inherit;
 }
 
 .project-card:hover {
-    transform: scale(1.4); /* 1.7 çok büyük ve taşma yapabilir, 1.1 veya 1.2 daha idealdir */
+    transform: scale(1.4);
     z-index: 10;
     box-shadow: 0 20px 40px rgba(0,0,0,0.8);
 }
@@ -112,7 +206,7 @@ body {
 .project-card img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Tez.jpg ve diğerlerinin boyutunu karta eşitler */
+    object-fit: cover;
     transition: 0.4s;
 }
 
@@ -139,7 +233,9 @@ body {
 .project-overlay h3 { color: #00d4ff; margin-bottom: 10px; }
 .project-overlay p { font-size: 0.9rem; color: #fff; }
 
-/* --- FOOTER (ALT SİYAH BLOK) --- */
+/* ==========================================================================
+   6. FOOTER
+   ========================================================================== */
 .footer {
     background-color: rgba(0, 0, 0, 0.9);
     color: white;
@@ -148,7 +244,7 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     z-index: 5;
-    margin-top: auto; /* Kapsayıcıdaki flex sayesinde en alta yapışır */
+    margin-top: auto;
 }
 
 .footer-content {
