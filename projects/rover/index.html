@@ -30,29 +30,146 @@
 
     <main class="content-wrapper">
         <article class="project-details">
-            <h2>Proje Tanımı</h2>
+            <h2>Co-Founder & Team Captain</h2>
             <p>
-                Earendil Rover projesi, zorlu arazi koşullarında otonom hareket kabiliyetine sahip 
-                mobil bir robot platformudur. Bu proje kapsamında mekanik tasarım, elektronik kontrol 
-                sistemleri ve yazılım entegrasyonu süreçleri yürütülmüştür.
+                As a Founding Member of the Earendil Rover Team, I played a pivotal role in establishing 
+                the team’s engineering culture and technical foundation. Over two years, I progressed from 
+                being the lead designer to the Team Captain, overseeing the growth of the team from 15 to 
+                30 members and leading the transition from manual control systems to sophisticated autonomous 
+                navigation.
             </p>
-            
+            <h3>Leadership & Strategic Management (Season 2 - Team Captain)</h3>
             <p>
-                Robotun temel özellikleri arasında engel algılama, rota planlama ve uzaktan veri iletimi 
-                yer almaktadır. Bu bölümde projenin teknik mimarisinden ve karşılaşılan zorlukların 
-                nasıl aşıldığından bahsedebilirsin.
+                In my second year, I took over the leadership of a 30-person multidisciplinary team, managing 
+                everything from high-level coordination to technical execution:
             </p>
-
-            <div class="project-images">
-                <img src="../../photos/rover.webp" alt="Earendil Rover Project">
+            <ul>
+                <li><strong>Championship Success:</strong> Under my leadership, the team achieved 1st Place 
+                in all three categories at the ARC Junior '25 competition, dominating the field through superior 
+                technical preparation.</li>
+                <li><strong>Autonomous Evolution:</strong> I spearheaded the project’s most significant upgrade 
+                transforming the rover from a remote-controlled platform into a fully autonomous system to meet 
+                the advanced requirements of the ARC Jr. '25 specifications.</li>
+                <li><strong>Multi-Disciplinary Oversight:</strong> I was active in every phase of the project, 
+                including software development, hardware integration, and sponsor relations, while also providing 
+                technical training to new members.</li>
+                <li><strong>National Competition:</strong> Led the team to the semi-finals of the TEKNOFEST 
+                Agricultural Technologies competition with "Project OKTA," focusing on automation and robotics 
+                in smart farming.</li>
+            </ul>
+            <div class="project-header-row">
+                <h2>3D Rover Design & Award 2025</h2>
+                <h3> Play with Vehicle</h3>
             </div>
 
-            <h2>Teknik Detaylar</h2>
+            <div class="split-project-row">
+                <div id="model-container"></div>
+
+                <div class="rover-image-side">
+                    <img src="../../photos/rover_award.jpeg" alt="Rover Project Award">
+                </div>
+            </div>
+
+            <script type="importmap">
+            {
+                "imports": {
+                    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+                }
+            }
+            </script>
+
+            <script type="module">
+                import * as THREE from 'three';
+                import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+                import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+                const container = document.getElementById('model-container');
+                
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, container.clientWidth / 500, 0.1, 1000);
+                
+                // YAKINLIK AYARI: 5'ten 3'e düşürerek modeli yakınlaştırdık
+                camera.position.set(-0.5, 0.5, 1); 
+
+                const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                renderer.setSize(container.clientWidth, 500);
+                container.appendChild(renderer.domElement);
+
+                const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+                scene.add(ambientLight);
+
+                const dirLight = new THREE.DirectionalLight(0x00d4ff, 1.8);
+                dirLight.position.set(5, 5, 5);
+                scene.add(dirLight);
+
+                const controls = new OrbitControls(camera, renderer.domElement);
+                controls.enableDamping = true;
+                controls.target.set(0, -0.25, 0); 
+                controls.update();
+
+                const loader = new OBJLoader();
+                loader.load('../../photos/rover_1.obj', function (object) {
+                    object.traverse(function (child) {
+                        if (child.isMesh) {
+                            child.material = new THREE.MeshPhongMaterial({ 
+                                color: 0x00d4ff,
+                                specular: 0x222222,
+                                shininess: 100
+                            });
+                        }
+                    });
+
+                    const box = new THREE.Box3().setFromObject(object);
+                    const center = box.getCenter(new THREE.Vector3());
+                    object.position.sub(center);
+                    
+                    scene.add(object);
+                });
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    controls.update();
+                    renderer.render(scene, camera);
+                }
+                animate();
+
+                window.addEventListener('resize', () => {
+                    const width = container.clientWidth;
+                    camera.aspect = width / 500;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(width, 500);
+                });
+            </script>
+            
+
+            <h3>Design & Manufacturing (Season 1 - Founding Designer)</h3>
             <p>
-                Kullanılan şasi tasarımı, sensör füzyonu (Ultrasonik, IMU vb.) ve mikrodenetleyici 
-                seçimleri hakkında detaylı bilgileri buraya ekleyebilirsin. Robotun otonom sürüş 
-                algoritmaları bu projenin kalbini oluşturmaktadır.
+                As the team's primary designer in its inaugural year, I was responsible for bringing the first 
+                prototype to life:
             </p>
+            <ul>
+                <li><strong>Full-Scale CAD Design:</strong> Performed the complete 3D modeling of the rover using 
+                SolidWorks, ensuring structural integrity and component compatibility.</li>
+                <li><strong>Manufacturing & Assembly:</strong> Took an active role in the 3D printing, fabrication, 
+                and assembly of the entire vehicle, translating digital designs into a physical racing 
+                prototype.</li>
+                <li><strong>Initial Success:</strong> My technical designs contributed to our team winning 3rd 
+                Place in a category at ARC Junior '24, establishing our reputation as a top-tier competitor.</li>
+            </ul>
+
+            <h2>Rover Design & Team 2024</h2>
+            <div class="rover-gallery-row">
+                <div class="rover-team">
+                    <img src="../../photos/rover_2024_vehicle.jpg" alt="Rover 2024 Team">
+                </div>
+
+                <div class="rover-vehicle">
+                    <img src="../../photos/rover_2024_team.jpg" alt="Rover 2024 Vehicle">
+                </div>
+            </div>
+
+            
         </article>
     </main>
 

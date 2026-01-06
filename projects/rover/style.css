@@ -184,3 +184,96 @@ input:checked + .slider {
     background-image: url('../../photos/plugout.png');
     filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.6));
 }
+/* İki öğeyi yan yana dizen ana kapsayıcı */
+.split-project-row {
+    display: flex !important;
+    justify-content: center;
+    align-items: stretch; /* Her iki kutunun yüksekliğini eşitler */
+    gap: 25px;
+    margin: 40px 0;
+    width: 100%;
+}
+
+/* 3D Model Alanı */
+#model-container {
+    flex: 1;
+    height: 380px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    border-radius: 25px;
+    cursor: grab;
+    overflow: hidden;
+}
+
+/* Sağdaki Görsel Alanı */
+.rover-image-side {
+    flex: 1;
+    height: 380px;
+}
+
+.rover-image-side img {
+    width: 100% !important;
+    height: 100%;
+    object-fit: cover; /* Fotoğrafı kutuya tam sığdırır */
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    border: 2px solid rgba(0, 212, 255, 0.1);
+}
+
+/* Mobil için alt alta geçme ayarı */
+@media (max-width: 850px) {
+    .split-project-row {
+        flex-direction: column;
+    }
+    #model-container, .rover-image-side {
+        width: 100%;
+        height: 400px; /* Mobilde biraz küçültebiliriz */
+    }
+}
+/* Ana Kapsayıcı */
+.rover-gallery-row {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 25px; /* Fotoğraflar arası boşluk */
+    margin: 40px 0;
+    width: 100%;
+}
+
+/* --- EKİP FOTOĞRAFI AYARLARI --- */
+.rover-team {
+    flex: 1; /* Alanı eşit paylaşması için */
+}
+
+.rover-team img {
+    width: 100% !important;
+    height: 350px; /* İstediğin yüksekliği buradan ayarla */
+    object-fit: cover; /* Fotoğrafı yamultmadan sığdırır */
+    border-radius: 15px;
+    border: 2px solid rgba(0, 212, 255, 0.3); /* Mavi vurgu */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* --- ARAÇ FOTOĞRAFI AYARLARI --- */
+.rover-vehicle {
+    flex: 1;
+}
+
+.rover-vehicle img {
+    width: 100% !important;
+    height: 350px; /* Ekip fotoğrafı ile aynı yaparak hizayı koruyabilirsin */
+    object-fit: cover;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1); /* Daha sade bir çerçeve */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Mobilde (telefonlarda) alt alta gelmesi için */
+@media (max-width: 800px) {
+    .rover-gallery-row {
+        flex-direction: column;
+    }
+    .rover-team img, .rover-vehicle img {
+        height: auto; /* Mobilde orijinal orana döner */
+    }
+}
