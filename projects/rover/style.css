@@ -280,3 +280,79 @@ input:checked + .slider {
         height: auto; /* Mobilde orijinal orana döner */
     }
 }
+/* --- VİDEO SİSTEMİ DÜZENLEMELERİ --- */
+
+/* Video Kapsayıcı: 3D model ile aynı hizada ve boyutta */
+.video-side-container {
+    flex: 1;
+    height: 380px; /* 3D Model ile tam uyumlu olması için */
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 25px;
+    overflow: hidden; /* Videonun dışarı taşmasını engeller */
+    position: relative;
+    border: 2px solid rgba(0, 212, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Video Placeholder (Butonun olduğu karanlık alan) */
+.video-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #000, #111);
+}
+
+/* İzle Butonu Tasarımı */
+.play-trigger {
+    background: #00d4ff;
+    color: #000;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+    z-index: 10;
+}
+
+.play-trigger:hover {
+    transform: scale(1.05);
+    background: white;
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.5);
+}
+
+/* Videonun Kendisi: Kutuyu tam doldurması ve taşmaması için */
+#video-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+#rover-video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover; /* Video siyah boşluk kalmadan kutuya yayılır */
+    display: block;
+}
+
+/* Alt Satırdaki Ödül Fotoğrafı (Full Width) */
+.full-width-award {
+    width: 600px;           /* Belirlediğin sabit genişlik */
+    margin-top: 30px;      /* Üstteki öğelerle mesafe */
+    margin-left: auto;     /* Sol boşluğu otomatik ayarlar */
+    margin-right: auto;    /* Sağ boşluğu otomatik ayarlar */
+    display: block;        /* Ortalamanın çalışması için blok eleman olmalı */
+}
+
+.full-width-award img {
+    width: 100%;
+    height: auto;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}

@@ -116,11 +116,7 @@ body {
 }
 
 /* Hover efekti (isteğe bağlı) */
-.skill-item:hover {
-    background: #00d5ffd1;
-    color: white;
-    box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
-}
+
 
 .project-details ul {
     list-style: none;

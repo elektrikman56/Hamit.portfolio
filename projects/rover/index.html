@@ -13,7 +13,7 @@
     
     <nav class="navbar">
         <div class="header-container">
-            <a href="../../index.html" class="back-button">← ANA SAYFA</a>
+            <a href="../../index.html" class="back-button">← MAIN PAGE</a>
             <div class="header-info">
                 <h1 class="header-name">EARENDIL ROVER</h1>
                 <p class="header-subtitle">Autonomous Mobile Robots</p>
@@ -38,6 +38,7 @@
                 30 members and leading the transition from manual control systems to sophisticated autonomous 
                 navigation.
             </p>
+            <h2>Rover Team 2025</h2>
             <h3>Leadership & Strategic Management (Season 2 - Team Captain)</h3>
             <p>
                 In my second year, I took over the leadership of a 30-person multidisciplinary team, managing 
@@ -58,16 +59,30 @@
                 in smart farming.</li>
             </ul>
             <div class="project-header-row">
-                <h2>3D Rover Design & Award 2025</h2>
-                <h3> Play with Vehicle</h3>
+                
+                <h3> You can pet the rover!</h3>
             </div>
 
             <div class="split-project-row">
                 <div id="model-container"></div>
 
-                <div class="rover-image-side">
-                    <img src="../../photos/rover_award.jpeg" alt="Rover Project Award">
+                <div class="video-side-container">
+                    <div id="video-placeholder" class="video-placeholder">
+                        <button id="play-button" class="play-trigger">
+                            <span>▶ Watch Rover in Action</span>
+                        </button>
+                    </div>
+                    <div id="video-wrapper" style="display: none; height: 100%;">
+                        <video id="rover-video" controls width="100%">
+                            <source src="../../photos/rover_video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
                 </div>
+            </div>
+
+            <div class="full-width-award">
+                <img src="../../photos/rover_award.jpeg" alt="Rover Project Award">
             </div>
 
             <script type="importmap">
@@ -134,6 +149,17 @@
                 }
                 animate();
 
+                // --- VİDEO KONTROLÜ BURADA ---
+                const playBtn = document.getElementById('play-button');
+                if(playBtn) {
+                    playBtn.addEventListener('click', function() {
+                        document.getElementById('video-placeholder').style.display = 'none';
+                        document.getElementById('video-wrapper').style.display = 'block';
+                        document.getElementById('rover-video').play();
+                    });
+                }
+                // -----------------------------
+
                 window.addEventListener('resize', () => {
                     const width = container.clientWidth;
                     camera.aspect = width / 500;
@@ -142,7 +168,7 @@
                 });
             </script>
             
-
+            <h2>Rover Team 2024</h2>
             <h3>Design & Manufacturing (Season 1 - Founding Designer)</h3>
             <p>
                 As the team's primary designer in its inaugural year, I was responsible for bringing the first 
@@ -158,14 +184,14 @@
                 Place in a category at ARC Junior '24, establishing our reputation as a top-tier competitor.</li>
             </ul>
 
-            <h2>Rover Design & Team 2024</h2>
+            
             <div class="rover-gallery-row">
                 <div class="rover-team">
-                    <img src="../../photos/rover_2024_vehicle.jpg" alt="Rover 2024 Team">
+                    <img src="../../photos/rover_2024_team.jpg" alt="Rover 2024 Team">
                 </div>
 
                 <div class="rover-vehicle">
-                    <img src="../../photos/rover_2024_team.jpg" alt="Rover 2024 Vehicle">
+                    <img src="../../photos/rover_2024_vehicle.jpg" alt="Rover 2024 Vehicle">
                 </div>
             </div>
 
@@ -177,7 +203,7 @@
         <div class="footer-content">
             <p>&copy; 2024 Hamit Budak - Earendil Rover Project</p>
             <div class="social-links">
-                <a href="../../index.html">Ana Sayfa</a>
+                <a href="../../index.html">Main Page</a>
             </div>
         </div>
     </footer>
